@@ -18,17 +18,45 @@
 
 ---
 
-## 📸 Aperçu
+## 📸 Aperçu de l'Application
 
-<div align="center">
+### 🔐 Authentification
+![Authentification](docs/screenshots/Interface%20d'authentification%20et%20formulaire%20de%20connexion%20sécurisée.png)
 
-### Page de Connexion
-![Login Page](docs/screenshots/login.jpg)
+### 📊 Tableau de Bord Général
+![Tableau de bord général](docs/screenshots/Tableau%20de%20bord%20général%20(indicateurs%20clés).png)
 
-### Tableau de Bord Principal
-![Dashboard](docs/screenshots/dashboard.jpg)
+### 🌗 Mode Sombre & Multilingue
+![Mode sombre et multilingue](docs/screenshots/Interface%20multilingue%20et%20mode%20sombre%20du%20tableau%20de%20bord%20utilisateur.png)
 
-</div>
+### 📱 Interface Responsive
+| Vue 1 | Vue 2 |
+|:---:|:---:|
+| ![Responsive 1](docs/screenshots/Interface%20responsive%20du%20tableau%20de%20bord%20utilisateur.png) | ![Responsive 2](docs/screenshots/Interface%20responsive%20du%20tableau%20de%20bord%20utilisateur%20(2).png) |
+
+### 🖥️ Gestion des Machines Virtuelles
+![Liste des VMs](docs/screenshots/Inventaire%20et%20gestion%20des%20machines%20virtuelles%20de%20l'utilisateur.png)
+
+### ➕ Création d'une VM
+![Création VM](docs/screenshots/Interface%20de%20création%20et%20de%20configuration%20d'une%20machine%20virtuelle.png)
+
+### 📋 Détail & Supervision d'une VM
+![Détail VM](docs/screenshots/Fiche%20technique%20et%20supervision%20en%20temps%20réel%20d'une%20machine%20virtuelle%20(2).png)
+
+### 🖥️ Console Graphique HTML5 (Apache Guacamole)
+![Console Guacamole](docs/screenshots/Console%20graphique%20HTML5%20interactive%20intégrée%20(Apache%20Guacamole).png)
+
+### 🔔 Centre de Notifications
+![Notifications](docs/screenshots/Centre%20de%20notifications%20événementielles%20en%20direct.png)
+
+### 🛡️ Panneau Administrateur
+![Admin](docs/screenshots/Tableau%20de%20bord%20administrateur%20et%20vue%20globale%20du%20parc.png)
+
+### 📜 Journaux d'Audit (Audit Trail)
+![Audit Trail](docs/screenshots/Module%20des%20journaux%20d'audit%20de%20sécurité%20(Audit%20Trail).png)
+
+### 📖 Documentation API (Swagger / OpenAPI)
+![Swagger](docs/screenshots/Documentation%20interactive%20OpenAPISwagger%20des%20points%20d'accès%20FastAPI.png)
 
 ---
 
