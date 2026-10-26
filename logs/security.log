@@ -134,3 +134,20 @@
 2026-10-20 00:03:48,801 | INFO     | IP: 127.0.0.1 | User: admin | app.security — Action: Connexion de l'utilisateur 'admin' | Résultat: Réussite
 2026-10-20 01:10:53,777 | INFO     | IP: 127.0.0.1 | User: admin | app.security — Action: Connexion de l'utilisateur 'admin' | Résultat: Réussite
 2026-10-20 01:25:50,896 | WARNING  | IP: 127.0.0.1 | User: admin | app.security — Action: Connexion de l'utilisateur 'admin' | Résultat: Échec (Identifiants incorrects)
+2026-10-20 01:34:18,867 | INFO     | IP: 127.0.0.1 | User: admin | app.security — Action: Changement de rôle de l'utilisateur 'anass' (is_admin: False) | Résultat: Réussite
+2026-10-20 01:34:22,380 | INFO     | IP: 127.0.0.1 | User: admin | app.security — Action: Changement de rôle de l'utilisateur 'anass1' (is_admin: False) | Résultat: Réussite
+2026-10-20 01:34:25,619 | WARNING  | IP: 127.0.0.1 | User: admin | app.security — Action: Changement de rôle de l'utilisateur ID 7 | Résultat: Échec (Tentative de modification de son propre rôle)
+2026-10-20 01:34:33,067 | WARNING  | IP: 127.0.0.1 | User: admin | app.security — Action: Changement de rôle de l'utilisateur ID 7 | Résultat: Échec (Tentative de modification de son propre rôle)
+2026-10-20 01:34:38,400 | INFO     | IP: 127.0.0.1 | User: admin | app.security — Action: Changement de rôle de l'utilisateur 'mohammed' (is_admin: False) | Résultat: Réussite
+2026-10-20 01:34:42,631 | INFO     | IP: 127.0.0.1 | User: admin | app.security — Action: Changement de rôle de l'utilisateur 'sadikimohammed' (is_admin: False) | Résultat: Réussite
+2026-10-20 01:34:45,777 | INFO     | IP: 127.0.0.1 | User: admin | app.security — Action: Changement de rôle de l'utilisateur 'sadikisadiki' (is_admin: False) | Résultat: Réussite
+2026-10-20 01:35:10,860 | WARNING  | IP: 127.0.0.1 | User: sadikimohammed | app.security — Action: Connexion de l'utilisateur 'sadikimohammed' | Résultat: Échec (Identifiants incorrects)
+2026-10-20 01:35:29,807 | INFO     | IP: 127.0.0.1 | User: sadikimohammed | app.security — Action: Connexion de l'utilisateur 'sadikimohammed' | Résultat: Réussite
+2026-10-21 09:26:43,247 | INFO     | IP: 127.0.0.1 | User: admin | app.security — Action: Connexion de l'utilisateur 'admin' | Résultat: Réussite
+2026-10-21 09:28:30,335 | INFO     | IP: 127.0.0.1 | User: sadikimohammed | app.security — Action: Connexion de l'utilisateur 'sadikimohammed' | Résultat: Réussite
+2026-10-21 09:28:40,871 | WARNING  | IP: 127.0.0.1 | User: sadikimohammed | app.security — Action: Connexion de l'utilisateur 'sadikimohammed' | Résultat: Échec (Identifiants incorrects)
+2026-10-21 09:28:52,624 | INFO     | IP: 127.0.0.1 | User: sadikimohammed | app.security — Action: Connexion de l'utilisateur 'sadikimohammed' | Résultat: Réussite
+2026-10-21 09:30:57,677 | INFO     | IP: 127.0.0.1 | User: admin | app.security — Action: Connexion de l'utilisateur 'admin' | Résultat: Réussite
+2026-10-21 09:33:23,106 | INFO     | IP: 127.0.0.1 | User: admin | app.security — Action: Rejet de l'utilisateur 'sadiiiiki' | Résultat: Réussite
+2026-10-21 11:07:56,910 | WARNING  | IP: 127.0.0.1 | User: admin | app.security — Action: Connexion de l'utilisateur 'admin' | Résultat: Échec (Identifiants incorrects)
+2026-10-21 11:08:05,864 | INFO     | IP: 127.0.0.1 | User: admin | app.security — Action: Connexion de l'utilisateur 'admin' | Résultat: Réussite

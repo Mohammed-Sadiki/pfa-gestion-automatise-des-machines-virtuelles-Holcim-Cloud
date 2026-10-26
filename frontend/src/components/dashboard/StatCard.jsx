@@ -10,11 +10,11 @@ const SPARKLINES = {
 }
 
 const COLORS = {
-  blue:  { iconBg: 'bg-blue-50',    iconText: 'text-blue-500',    border: 'border-blue-100',    line: '#3B82F6', fill: 'rgba(59,130,246,0.08)'   },
-  green: { iconBg: 'bg-emerald-50', iconText: 'text-emerald-500', border: 'border-emerald-100', line: '#10B981', fill: 'rgba(16,185,129,0.08)'   },
-  gray:  { iconBg: 'bg-slate-50',   iconText: 'text-slate-500',   border: 'border-slate-100',   line: '#94A3B8', fill: 'rgba(148,163,184,0.08)'  },
-  red:   { iconBg: 'bg-red-50',     iconText: 'text-red-500',     border: 'border-red-100',     line: '#EF4444', fill: 'rgba(239,68,68,0.08)'    },
-  amber: { iconBg: 'bg-amber-50',   iconText: 'text-amber-500',   border: 'border-amber-100',   line: '#F59E0B', fill: 'rgba(245,158,11,0.08)'   },
+  blue:  { iconBg: 'bg-blue-50 dark:bg-blue-950/40',       iconText: 'text-blue-500 dark:text-blue-400',       border: 'border-blue-100 dark:border-blue-800/40',       line: '#3B82F6', fill: 'rgba(59,130,246,0.08)'   },
+  green: { iconBg: 'bg-emerald-50 dark:bg-emerald-950/40', iconText: 'text-emerald-500 dark:text-emerald-400', border: 'border-emerald-100 dark:border-emerald-800/40', line: '#10B981', fill: 'rgba(16,185,129,0.08)'   },
+  gray:  { iconBg: 'bg-slate-50 dark:bg-slate-800/50',     iconText: 'text-slate-500 dark:text-slate-400',     border: 'border-slate-100 dark:border-slate-700/50',     line: '#94A3B8', fill: 'rgba(148,163,184,0.08)'  },
+  red:   { iconBg: 'bg-red-50 dark:bg-red-950/40',         iconText: 'text-red-500 dark:text-red-400',         border: 'border-red-100 dark:border-red-800/40',         line: '#EF4444', fill: 'rgba(239,68,68,0.08)'    },
+  amber: { iconBg: 'bg-amber-50 dark:bg-amber-950/40',     iconText: 'text-amber-500 dark:text-amber-400',     border: 'border-amber-100 dark:border-amber-800/40',     line: '#F59E0B', fill: 'rgba(245,158,11,0.08)'   },
 }
 
 function MiniSparkline({ color, data }) {
@@ -41,7 +41,7 @@ export default function StatCard({ icon, label, value, color = 'blue', trend = '
   const c = COLORS[color] || COLORS.blue
   const data = SPARKLINES[color] || SPARKLINES.blue
   return (
-    <div className="bg-white rounded-[20px] p-5 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(10,37,64,0.04)] hover:shadow-[0_8px_25px_-4px_rgba(10,37,64,0.07)] transition-all duration-200 flex flex-col justify-between min-h-[130px] relative overflow-hidden">
+    <div className="bg-white dark:bg-[#0f1e35] rounded-[20px] p-5 border border-slate-100 dark:border-white/[0.08] shadow-[0_4px_20px_-4px_rgba(10,37,64,0.04)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.35)] hover:shadow-[0_8px_25px_-4px_rgba(10,37,64,0.07)] dark:hover:shadow-[0_8px_25px_rgba(0,0,0,0.5)] transition-all duration-200 flex flex-col justify-between min-h-[130px] relative overflow-hidden">
 
       {/* Icon badge */}
       <div className="flex items-center justify-between mb-2">
@@ -52,15 +52,15 @@ export default function StatCard({ icon, label, value, color = 'blue', trend = '
 
       {/* Value + Label */}
       <div className="flex-1">
-        <p className="text-2xl sm:text-[28px] font-black text-[#0F172A] tracking-tight leading-none font-sans">
+        <p className="text-2xl sm:text-[28px] font-black text-[#0F172A] dark:text-[#E8EDF5] tracking-tight leading-none font-sans">
           {value}
         </p>
-        <p className="text-xs sm:text-[13px] font-medium text-slate-500 mt-1 leading-tight">{label}</p>
+        <p className="text-xs sm:text-[13px] font-medium text-slate-500 dark:text-slate-400 mt-1 leading-tight">{label}</p>
       </div>
 
       {/* Trend + Sparkline row */}
       <div className="flex items-end justify-between mt-3">
-        <span className="text-[11px] font-semibold text-slate-400">{trend}</span>
+        <span className="text-[11px] font-semibold text-slate-400 dark:text-slate-500">{trend}</span>
         <MiniSparkline color={color} data={data} />
       </div>
     </div>

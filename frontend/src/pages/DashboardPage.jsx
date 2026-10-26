@@ -77,10 +77,10 @@ function DateCard() {
   const date = now.getDate()
   const month = now.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' })
   return (
-    <div className="hidden sm:flex flex-col items-center justify-center bg-white/90 backdrop-blur-sm rounded-2xl px-5 py-4 shadow-lg text-center min-w-[110px]">
-      <p className="text-xs font-semibold text-slate-500 capitalize">{day}</p>
-      <p className="text-4xl font-black text-[#1D4ED8] leading-none my-1">{date}</p>
-      <p className="text-[11px] font-medium text-slate-500 capitalize">{month}</p>
+    <div className="hidden sm:flex flex-col items-center justify-center bg-white/90 dark:bg-[#0f1e35]/90 dark:border dark:border-white/10 backdrop-blur-sm rounded-2xl px-5 py-4 shadow-lg dark:shadow-[0_8px_25px_rgba(0,0,0,0.5)] text-center min-w-[110px]">
+      <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 capitalize">{day}</p>
+      <p className="text-4xl font-black text-[#1D4ED8] dark:text-blue-400 leading-none my-1">{date}</p>
+      <p className="text-[11px] font-medium text-slate-500 dark:text-slate-400 capitalize">{month}</p>
     </div>
   )
 }
@@ -124,14 +124,14 @@ function VMRow({ vm, onRefresh }) {
   return (
     <div
       onClick={() => navigate(`/vms/${vm.id}`)}
-      className="flex items-center gap-3 px-4 py-3.5 hover:bg-slate-50/70 transition-colors cursor-pointer border-b border-slate-100 last:border-b-0"
+      className="flex items-center gap-3 px-4 py-3.5 hover:bg-slate-50/70 dark:hover:bg-slate-800/40 transition-colors cursor-pointer border-b border-slate-100 dark:border-white/[0.06] last:border-b-0"
     >
       {/* OS icon */}
       <OsIcon osType={vm.os_type} />
 
       {/* Name + OS */}
       <div className="min-w-0 flex-1">
-        <p className="text-sm font-bold text-[#1D4ED8] truncate">{vm.name}</p>
+        <p className="text-sm font-bold text-[#1D4ED8] dark:text-blue-400 truncate">{vm.name}</p>
         <p className="text-xs text-slate-400 font-medium">{osLabel(vm.os_type)}</p>
       </div>
 
@@ -141,10 +141,10 @@ function VMRow({ vm, onRefresh }) {
       </span>
 
       {/* vCPU */}
-      <span className="hidden md:block text-xs font-semibold text-slate-600 w-14 text-center">{vcpu} vCPU</span>
+      <span className="hidden md:block text-xs font-semibold text-slate-600 dark:text-slate-400 w-14 text-center">{vcpu} vCPU</span>
 
       {/* RAM */}
-      <span className="hidden md:block text-xs font-semibold text-slate-600 w-14 text-center">{ram}</span>
+      <span className="hidden md:block text-xs font-semibold text-slate-600 dark:text-slate-400 w-14 text-center">{ram}</span>
 
       {/* Date */}
       <div className="hidden lg:block text-center text-[11px] text-slate-400 font-medium w-20 whitespace-pre-line">
@@ -155,24 +155,24 @@ function VMRow({ vm, onRefresh }) {
       <div className="flex items-center gap-1.5 shrink-0" onClick={e => e.stopPropagation()}>
         <button
           onClick={handleStart}
-          disabled={loading || vm.status === 'running'}
+          disabled={loading || (vm.status || '').toLowerCase() === 'running'}
           title="Démarrer"
-          className="w-7 h-7 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-600 flex items-center justify-center transition-colors disabled:opacity-40"
+          className="w-7 h-7 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center transition-colors disabled:opacity-40"
         >
-          <Play size={12} className="fill-emerald-600 ml-0.5" />
+          <Play size={12} className="fill-emerald-600 dark:fill-emerald-400 ml-0.5" />
         </button>
         <button
           onClick={handleStop}
-          disabled={loading || vm.status !== 'running'}
+          disabled={loading || (vm.status || '').toLowerCase() !== 'running'}
           title="Arrêter"
-          className="w-7 h-7 rounded-lg bg-red-50 hover:bg-red-100 text-red-500 flex items-center justify-center transition-colors disabled:opacity-40"
+          className="w-7 h-7 rounded-lg bg-red-50 dark:bg-red-950/40 hover:bg-red-100 dark:hover:bg-red-900/50 text-red-500 dark:text-red-400 flex items-center justify-center transition-colors disabled:opacity-40"
         >
-          <Square size={11} className="fill-red-500" />
+          <Square size={11} className="fill-red-500 dark:fill-red-400" />
         </button>
         <button
           onClick={() => navigate(`/vms/${vm.id}`)}
           title="Plus"
-          className="w-7 h-7 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-500 flex items-center justify-center transition-colors"
+          className="w-7 h-7 rounded-lg bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-500 dark:text-slate-400 flex items-center justify-center transition-colors"
         >
           <MoreHorizontal size={14} />
         </button>
@@ -185,10 +185,10 @@ function VMRow({ vm, onRefresh }) {
 function ActivityItem({ notif }) {
   const dot = activityColor(notif.title)
   return (
-    <div className="flex items-start gap-3 py-3 px-4 hover:bg-slate-50/60 transition-colors border-b border-slate-100 last:border-b-0">
+    <div className="flex items-start gap-3 py-3 px-4 hover:bg-slate-50/60 dark:hover:bg-slate-800/40 transition-colors border-b border-slate-100 dark:border-white/[0.06] last:border-b-0">
       <div className={`w-2.5 h-2.5 rounded-full ${dot} mt-1 shrink-0`} />
       <div className="min-w-0 flex-1">
-        <p className="text-sm font-semibold text-[#0F172A] truncate">{notif.title || 'Activité'}</p>
+        <p className="text-sm font-semibold text-[#0F172A] dark:text-[#E8EDF5] truncate">{notif.title || 'Activité'}</p>
         <p className="text-xs text-slate-400 mt-0.5 line-clamp-1">{notif.message}</p>
       </div>
       <span className="text-[11px] text-slate-400 shrink-0 whitespace-nowrap">
@@ -230,9 +230,9 @@ export default function DashboardPage() {
 
   const stats = {
     total:   vms.length,
-    running: vms.filter(v => v.status === 'running').length,
-    stopped: vms.filter(v => v.status === 'stopped').length,
-    error:   vms.filter(v => v.status === 'error').length,
+    running: vms.filter(v => (v.status || '').toLowerCase() === 'running').length,
+    stopped: vms.filter(v => (v.status || '').toLowerCase() === 'stopped').length,
+    error:   vms.filter(v => (v.status || '').toLowerCase() === 'error').length,
   }
 
   const recentVMs = [...vms].sort((a, b) => new Date(b.created_at) - new Date(a.created_at)).slice(0, 5)
@@ -319,46 +319,46 @@ export default function DashboardPage() {
           {/* Mes VMs */}
           <button
             onClick={() => navigate('/vms')}
-            className="flex items-center justify-between gap-3 px-4 py-3.5 rounded-[16px] bg-white border border-slate-200/80 hover:border-[#1D4ED8]/30 hover:bg-blue-50/40 shadow-sm transition-all text-left"
+            className="flex items-center justify-between gap-3 px-4 py-3.5 rounded-[16px] bg-white dark:bg-[#0f1e35] border border-slate-200/80 dark:border-white/[0.08] hover:border-[#1D4ED8]/30 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 shadow-sm dark:shadow-[0_4px_16px_rgba(0,0,0,0.3)] transition-all text-left"
           >
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-xl bg-blue-50 text-[#1D4ED8] flex items-center justify-center">
+              <div className="w-8 h-8 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-[#1D4ED8] dark:text-blue-400 flex items-center justify-center">
                 <Server size={15} />
               </div>
-              <span className="text-sm font-bold text-[#0F172A]">Mes VMs</span>
+              <span className="text-sm font-bold text-[#0F172A] dark:text-[#E8EDF5]">Mes VMs</span>
             </div>
-            <span className="text-slate-400 text-base">→</span>
+            <span className="text-slate-400 dark:text-slate-500 text-base">→</span>
           </button>
 
           {/* Activité */}
           <button
             onClick={() => navigate('/activity')}
-            className="flex items-center justify-between gap-3 px-4 py-3.5 rounded-[16px] bg-white border border-slate-200/80 hover:border-[#1D4ED8]/30 hover:bg-blue-50/40 shadow-sm transition-all text-left"
+            className="flex items-center justify-between gap-3 px-4 py-3.5 rounded-[16px] bg-white dark:bg-[#0f1e35] border border-slate-200/80 dark:border-white/[0.08] hover:border-[#1D4ED8]/30 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 shadow-sm dark:shadow-[0_4px_16px_rgba(0,0,0,0.3)] transition-all text-left"
           >
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
                 <Activity size={15} />
               </div>
-              <span className="text-sm font-bold text-[#0F172A]">Activité</span>
+              <span className="text-sm font-bold text-[#0F172A] dark:text-[#E8EDF5]">Activité</span>
             </div>
-            <span className="text-slate-400 text-base">→</span>
+            <span className="text-slate-400 dark:text-slate-500 text-base">→</span>
           </button>
 
           {/* Notifications */}
           <button
             onClick={() => navigate('/notifications')}
-            className="flex items-center justify-between gap-3 px-4 py-3.5 rounded-[16px] bg-white border border-slate-200/80 hover:border-[#1D4ED8]/30 hover:bg-blue-50/40 shadow-sm transition-all text-left relative"
+            className="flex items-center justify-between gap-3 px-4 py-3.5 rounded-[16px] bg-white dark:bg-[#0f1e35] border border-slate-200/80 dark:border-white/[0.08] hover:border-[#1D4ED8]/30 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 shadow-sm dark:shadow-[0_4px_16px_rgba(0,0,0,0.3)] transition-all text-left relative"
           >
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center relative">
+              <div className="w-8 h-8 rounded-xl bg-violet-50 dark:bg-violet-950/50 text-violet-600 dark:text-violet-400 flex items-center justify-center relative">
                 <Bell size={15} />
                 {unreadCount > 0 && (
                   <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-[9px] font-black rounded-full flex items-center justify-center">{unreadCount > 9 ? '9+' : unreadCount}</span>
                 )}
               </div>
-              <span className="text-sm font-bold text-[#0F172A]">Notifications</span>
+              <span className="text-sm font-bold text-[#0F172A] dark:text-[#E8EDF5]">Notifications</span>
             </div>
-            <span className="text-slate-400 text-base">→</span>
+            <span className="text-slate-400 dark:text-slate-500 text-base">→</span>
           </button>
         </div>
 
@@ -369,22 +369,22 @@ export default function DashboardPage() {
           <div className="lg:col-span-2">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center">
+                <div className="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center">
                   <Server size={13} />
                 </div>
-                <h2 className="text-sm font-bold text-[#0F172A]">VMs récentes</h2>
+                <h2 className="text-sm font-bold text-[#0F172A] dark:text-[#E8EDF5]">VMs récentes</h2>
               </div>
               <button
                 onClick={() => navigate('/vms')}
-                className="text-xs font-semibold text-slate-400 hover:text-[#1D4ED8] flex items-center gap-1 transition-colors"
+                className="text-xs font-semibold text-slate-400 hover:text-[#1D4ED8] dark:hover:text-blue-400 flex items-center gap-1 transition-colors"
               >
                 Voir tout →
               </button>
             </div>
 
-            <div className="bg-white rounded-[20px] border border-slate-100 shadow-[0_4px_20px_-4px_rgba(10,37,64,0.04)] overflow-hidden">
+            <div className="bg-white dark:bg-[#0f1e35] rounded-[20px] border border-slate-100 dark:border-white/[0.08] shadow-[0_4px_20px_-4px_rgba(10,37,64,0.04)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.35)] overflow-hidden">
               {/* Table header */}
-              <div className="hidden md:grid grid-cols-[1fr_80px_70px_70px_80px_100px] gap-3 px-4 py-2.5 border-b border-slate-100 bg-slate-50/60">
+              <div className="hidden md:grid grid-cols-[1fr_80px_70px_70px_80px_100px] gap-3 px-4 py-2.5 border-b border-slate-100 dark:border-white/[0.08] bg-slate-50/60 dark:bg-slate-900/40">
                 <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wide">Nom</span>
                 <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wide text-center">Statut</span>
                 <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wide text-center">vCPU</span>
@@ -397,9 +397,9 @@ export default function DashboardPage() {
                 <div className="py-10 text-center text-xs text-slate-400">Chargement…</div>
               ) : recentVMs.length === 0 ? (
                 <div className="py-12 text-center">
-                  <Server size={28} className="mx-auto text-slate-300 mb-2" />
-                  <p className="text-sm font-semibold text-slate-500">Aucune machine virtuelle</p>
-                  <button onClick={() => navigate('/create')} className="mt-3 text-xs font-bold text-[#1D4ED8] hover:underline">+ Créer une VM</button>
+                  <Server size={28} className="mx-auto text-slate-300 dark:text-slate-600 mb-2" />
+                  <p className="text-sm font-semibold text-slate-500 dark:text-slate-400">Aucune machine virtuelle</p>
+                  <button onClick={() => navigate('/create')} className="mt-3 text-xs font-bold text-[#1D4ED8] dark:text-blue-400 hover:underline">+ Créer une VM</button>
                 </div>
               ) : (
                 recentVMs.map(vm => (
@@ -413,20 +413,20 @@ export default function DashboardPage() {
           <div>
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center">
+                <div className="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center">
                   <Clock size={13} />
                 </div>
-                <h2 className="text-sm font-bold text-[#0F172A]">Activité récente</h2>
+                <h2 className="text-sm font-bold text-[#0F172A] dark:text-[#E8EDF5]">Activité récente</h2>
               </div>
               <button
                 onClick={() => navigate('/notifications')}
-                className="text-xs font-semibold text-slate-400 hover:text-[#1D4ED8] flex items-center gap-1 transition-colors"
+                className="text-xs font-semibold text-slate-400 hover:text-[#1D4ED8] dark:hover:text-blue-400 flex items-center gap-1 transition-colors"
               >
                 Voir tout →
               </button>
             </div>
 
-            <div className="bg-white rounded-[20px] border border-slate-100 shadow-[0_4px_20px_-4px_rgba(10,37,64,0.04)] overflow-hidden">
+            <div className="bg-white dark:bg-[#0f1e35] rounded-[20px] border border-slate-100 dark:border-white/[0.08] shadow-[0_4px_20px_-4px_rgba(10,37,64,0.04)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.35)] overflow-hidden">
               {notifications.length === 0 ? (
                 <div className="py-10 text-center text-xs text-slate-400">Aucune activité récente.</div>
               ) : (
